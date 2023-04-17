@@ -22,11 +22,6 @@ class DocumentsView(Resource):
         all_documents = document_service.get_all_documents()
         return render_template('documents.html', items=all_documents)
 
-    def put(self):
-        req_json = request.json
-        document_service.create(req_json)
-        return "", 204
-
 
 @documents_ns.route("/<int:document_id>")
 class DocumentView(Resource):
@@ -39,8 +34,19 @@ class DocumentView(Resource):
         except ItemNotFound:
             abort(404, message="Document not found")
 
-    # def delete(self, document_id: int):
-    #     return document_service.delete(document_id)
+    def put(self, document_id: int):
+        req_json = request.json
+        req_json["id_document"] = document_id
+        document_service.create(req_json)
+        return "", 204
+
+    def delete(self, document_id: int):
+        req_json = {}
+        req_json["id_document"] = document_id
+        req_json["name"] = ''
+        req_json["description"] = ''
+        document_service.create(req_json)
+        return "", 204
 
 
 @documents_ns.route("/documents/<int:document_id>")

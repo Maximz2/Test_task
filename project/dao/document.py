@@ -35,10 +35,8 @@ class DocumentDAO:
     #     self._db_session.commit()
     #     return None, 200
 
-    # def update(self, uid: int, id_document, name=None, description=None):
-    #     document = self._db_session.query(Document).filter(Document.id == uid).one_or_none()
-    #     if id_document:
-    #         document.id_document = id_document
+    # def update(self, id_document, name=None, description=None, document_data=None):
+    #     document = Document(**document_data)
     #     if name:
     #         document.name = name
     #     if description:

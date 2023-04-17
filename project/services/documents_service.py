@@ -11,8 +11,8 @@ class DocumentsService(BaseService):
     def create(self, document_data):
         return self.dao.create(document_data)
 
-    # def update(self, uid, id_document, name, description):
-    #     self.dao.update(uid, id_document, name, description)
+    # def update(self, id_document, name, description):
+    #     self.dao.update(id_document, name, description)
 
     # def delete(self, uid: int):
     #     return DocumentSchema().dump(self.dao.delete(uid))
